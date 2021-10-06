@@ -1,4 +1,4 @@
-using namespace T {
+namespace T {
 
     struct Point {
         int16_t x;
