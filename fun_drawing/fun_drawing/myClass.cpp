@@ -1,7 +1,4 @@
 #include "myClass.h"
-#include <iostream>
-#include <string>
-#include <vector>
 
 using namespace std;
 using namespace T;
@@ -58,13 +55,15 @@ int16_t Rectangle::getWidth() {return width;}
 int16_t Rectangle::getHeight() {return height;}
 void Rectangle::draw() {
     cout << getName() << " :" << endl;
-    for (int i = 0; i < getHeight(); i++) {
+    /*for (int i = 0; i < getHeight(); i++) {
         for (int j = 0; j < getWidth(); j++) {
             if (j == getWidth() - 1) cout << getDrawSym << endl;
             else if (i == 0 || i == getHeight() - 1 || j == 0) cout << getDrawSym;
             else cout << ' ';
         }
-    }
+    }*/
+
+
 }
 
 //Methods of 'Triangle' class

@@ -1,3 +1,9 @@
+#include <stdint.h>
+#include <iostream>
+#include <string>
+#include <vector>
+#include <windows.h>
+
 namespace T {
 
     struct Point {
@@ -7,7 +13,7 @@ namespace T {
 
     class Factory {
         public:
-            Shape* createShape(string type);
+            Shape* createShape(string) {};
     };
 
     class Storage {
@@ -20,10 +26,10 @@ namespace T {
 
     class System {
         public:
-        void displayQuery();
-        int16_t getQuery();
-        void readConsole();
-        void readFile();
+            void displayQuery();
+            int16_t getQuery();
+            void readConsole();
+            void readFile();
     };
 
     class Shape {
