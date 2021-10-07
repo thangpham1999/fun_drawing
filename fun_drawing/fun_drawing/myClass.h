@@ -4,6 +4,12 @@
 #include <vector>
 #include <windows.h>
 
+using namespace std;
+
+extern HANDLE hStdout;
+extern COORD destCoord;
+extern int currentY;
+
 namespace T {
 
     struct Point {
@@ -11,9 +17,25 @@ namespace T {
         int16_t y;
     };
 
+    class Shape {
+    protected:
+        string name;
+        string type;
+        char drawSym;
+    public:
+        void setName(string str);
+        void setType(string str);
+        void setDrawSym(char c);
+        string getName();
+        string getType();
+        char getDrawSym();
+        //virtual void errorChecking();
+        //virtual void draw();
+    };
+
     class Factory {
         public:
-            Shape* createShape(string) {};
+            Shape* createShape(string type);
     };
 
     class Storage {
@@ -30,22 +52,6 @@ namespace T {
             int16_t getQuery();
             void readConsole();
             void readFile();
-    };
-
-    class Shape {
-        private:
-            string name;
-            string type;
-            char drawSym;
-        public:
-            void setName(string str);
-            void setType(string str);
-            void setDrawSym(char c);
-            string getName();
-            string getType();
-            char getDrawSym();
-            virtual void errorChecking();
-            virtual void draw();
     };
 
     class Rectangle : public Shape {
@@ -66,40 +72,48 @@ namespace T {
         private:
             int16_t width;
             int16_t height;
-            string type;
+            string triType;
         public:
+            //Triangle(int16_t w, const string t = "Isosceles right");
+            //Triangle(int16_t w, int16_t h, const string t = "Isosceles");
+            Triangle(int16_t w, int16_t h, string t);
+            Triangle();
             void setWidth(int16_t w);
             void setHeight(int16_t h);
-            void setType(string str);
+            void setTriType(string str);
             int16_t getWidth();
             int16_t getHeight();
-            string getType();
+            string getTriType();
+            void draw();
     };
 
     class Ellipse : public Shape {
         private:
             Point center;
-            int16_t a;
-            int16_t b;
+            int16_t width;
+            int16_t height;
         public:
+            Ellipse();
+            Ellipse(int16_t x, int16_t y, int16_t w, int16_t h);
             void setCenter(int16_t x, int16_t y);
             void setAxisLen(int16_t x, int16_t y);
             Point getCenter();
-            int16_t getMajor();
-            int16_t getMinor();
+            int16_t getWidth();
+            int16_t getHeight();
+            void draw();
     };
 
     class Line : public Shape {
         private:
-            Point startPos;
             int16_t len;
-            int16_t dir;
+            string dir;
         public:
-            void setStartPos(int16_t x, int16_t y);
+            Line();
+            Line(int16_t l, string d);
             void setLen(int16_t num);
-            void setDir(int16_t num);
-            Point getStartPos();
+            void setDir(string str);
             int16_t getLen();
-            int16_t getDir();
+            string getDir();
+            void draw();
     };
 }
