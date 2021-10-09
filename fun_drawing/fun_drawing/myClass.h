@@ -17,24 +17,6 @@ namespace T {
         int16_t y;
     };
 
-    class UIHandler {
-    private:
-        int currentY;
-        static UIHandler instance;
-    public:
-        UIHandler(int y);
-        static UIHandler getInstance();
-        void draw(vector<Shape*> shapes);
-        void showOption();
-    };
-
-    class InputHandler {
-    private:
-        string type;
-        int16_t width = -1;
-    public:
-        void getInput();
-
     class Shape {
     protected:
         string name;
@@ -51,26 +33,39 @@ namespace T {
         virtual void draw() { ; };
     };
 
-    class Factory {
-        public:
-            Shape* createShape(string type);
+    //Presentation Layer
+    class UIHandler {
+    private:
+        static UIHandler instance;
+    public:
+        UIHandler(int y);
+        static UIHandler getInstance();
+        void draw(vector<Shape*> shapes);
+        void showOption();
+        void showGuide(int16_t opt);
+        void showWarning();
+        void showError();
+        int16_t getOption();
+        string getInputText();
+        string getInputFile();
     };
 
-    class Storage {
-        private:
-            vector<Shape*> shapeList;
-        public:
-            void addShape(Shape* shape);
-            vector<Shape*> getShape();
+    //Business Layer
+    class InputHandler {
+    private:
+        string name;
+        string type;
+        char drawSym = '\0';
+        int16_t width = -1;
+        int16_t height = -1;
+        string triType = "\0";
+        Point center = { 0, 0 };
+
+    public:
+        void handleInputText(string str);
+        void handleInputFile(string path);
     };
 
-    class System {
-        public:
-            void displayQuery();
-            int16_t getQuery();
-            void readConsole();
-            void readFile();
-    };
 
     class Rectangle : public Shape {
         private:
@@ -133,5 +128,19 @@ namespace T {
             int16_t getLen();
             string getDir();
             void draw();
+    };
+
+    //Data layer
+    class Factory {
+    public:
+        static Shape* createShape(string type);
+    };
+
+    class Storage {
+    private:
+        vector<Shape*> shapeList;
+    public:
+        void addShape(Shape* shape);
+        vector<Shape*> getShape();
     };
 }

@@ -13,43 +13,52 @@ COORD destCoord;
 int currentY = 0;
 
 //UIHandler
-class UIHandler {
-private:
-    int currentY;
-    static UIHandler instance;
-public:
-    UIHandler(int y) { currentY = y; };
-    static UIHandler getInstance() {};
-
-    void draw(vector<Shape*> shapes) {
-        for (auto shape : shapes) {
-            shape->draw(currentY);
-        }
-        currentY = 0;
-    };
-    void showOption() {
-        cout <<
+UIHandler::UIHandler(int y) { currentY = y; };
+static UIHandler getInstance() {};
+void UIHandler::draw(vector<Shape*> shapes) {
+    for (auto shape : shapes) {
+        shape->draw();
     }
-};
+    currentY = 0;
+}
 
-//InputHandler
-class InputHandler {
-private:
-    string type;
-    string width = -1;
-public:
-    Shape* getInput(string i) {
-        if (i != END_FLAG) {
-            switch (type) {
-            case Rectangle: {
-                width
-            }
-            }
+void UIHandler::showOption() {
+    cout << "Menu:\n" << endl << "1. Input text.\n" << "2. Draw.\n" << "3. Open file.\n" << "4. End session.\n";
+    cout << "Please enter your option: ";
+}
 
-            width = -1;
-        }
+void UIHandler::showGuide(int16_t opt) {
+    switch (opt) {
+    case 1:
+        cout << "Please enter your text (press Ctrl+Z if when you finish): \n";
+        break;
+    case 3:
+        cout << "Please enter your file path: \n";
+        break;
+    case 4:
+        cout << "Exiting";
+        break;
     }
-};
+}
+
+int16_t UIHandler::getOption() {
+    int16_t temp;
+    cin >> temp;
+    return temp;
+}
+
+string UIHandler::getInputText() {
+    string str;
+    getline(cin, str, static_cast<char>(EOF));
+    return str;
+}
+
+//Input Handler
+void InputHandler::handleInputText(string str) {
+    for (int i = 0; i < str.end() - str.begin(); i++) {
+        if (str[i] == '[') name = str.substr();
+    }
+}
 
 //Methods of Factory class
 Shape* Factory::createShape(string type) {
@@ -64,21 +73,6 @@ Shape* Factory::createShape(string type) {
 void Storage::addShape(Shape* shape) {shapeList.push_back(shape);}
 vector<Shape*> Storage::getShape() {return shapeList;}
 
-//Methods of 'System' class
-void System::displayQuery() {
-        cout << "Menu:\n" << endl << "1. Input text.\n" << "2. Draw.\n" << "3. Open file.\n" << "4. End session.\n";
-        cout << "Please enter the number: ";
-}
-int16_t System::getQuery() {
-        int16_t temp;
-        cin >> temp;
-        return temp;
-}
-void System::readConsole() {
-    string s;
-    getline(cin, s, static_cast<char>(EOF));
-}
-void System::readFile() {}
 
 //Methods of 'Shape' class
 void Shape::setName(string str) {name = str;}

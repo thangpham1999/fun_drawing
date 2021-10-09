@@ -9,7 +9,7 @@ using namespace T;
 
 int main(void)
 {
-    T::Rectangle rec(5,3);
+    /*T::Rectangle rec(5, 3);
     rec.setName("Object 1");
     rec.setDrawSym('+');
     rec.draw();
@@ -27,7 +27,9 @@ int main(void)
     T::Triangle tri(9, 5, "Isosceles");
     tri.setName("Object 4");
     tri.setDrawSym('*');
-    tri.draw();
+    tri.draw();*/
+
+
 }
 
 
