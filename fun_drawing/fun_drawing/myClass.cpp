@@ -11,6 +11,46 @@ using namespace T;
 HANDLE hStdout = GetStdHandle(STD_OUTPUT_HANDLE);
 COORD destCoord;
 int currentY = 0;
+
+//UIHandler
+class UIHandler {
+private:
+    int currentY;
+    static UIHandler instance;
+public:
+    UIHandler(int y) { currentY = y; };
+    static UIHandler getInstance() {};
+
+    void draw(vector<Shape*> shapes) {
+        for (auto shape : shapes) {
+            shape->draw(currentY);
+        }
+        currentY = 0;
+    };
+    void showOption() {
+        cout <<
+    }
+};
+
+//InputHandler
+class InputHandler {
+private:
+    string type;
+    string width = -1;
+public:
+    Shape* getInput(string i) {
+        if (i != END_FLAG) {
+            switch (type) {
+            case Rectangle: {
+                width
+            }
+            }
+
+            width = -1;
+        }
+    }
+};
+
 //Methods of Factory class
 Shape* Factory::createShape(string type) {
     if (type == "Triangle") return new Triangle;
@@ -159,35 +199,6 @@ int16_t Ellipse::getHeight() {return height;}
 void Ellipse::draw() {
     cout << name << " :" << endl;
     currentY++;
-
-    /*
-    for (int i = currentY; i < height + currentY; i++)
-    {
-        int dy = i - height / 2;
-        int y = center.y + dy + currentY;
-
-        int h = (int)round(width * sqrt(height * height / 4.0 - dy * dy) / height);
-        for (int dx = 0; dx <= h; dx++)
-        {
-            destCoord.Y = y;
-            destCoord.X = center.x + dx;
-            SetConsoleCursorPosition(hStdout, destCoord);
-            cout << drawSym;
-            destCoord.Y = y;
-            destCoord.X = center.x - dx;
-            SetConsoleCursorPosition(hStdout, destCoord);
-            cout << drawSym;
-        }
-        if (h >= 0)
-        {
-            destCoord.Y = y + 1;
-            destCoord.X = center.x;
-            SetConsoleCursorPosition(hStdout, destCoord);
-            cout << drawSym;
-        }
-    }
-    */
-
     for (int i = 0; i < width; i++)
     {
         int dx = i - width / 2;

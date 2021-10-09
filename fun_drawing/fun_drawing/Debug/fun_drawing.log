@@ -1,2 +1,161 @@
-﻿  myClass.cpp
-  fun_drawing.vcxproj -> C:\Users\HUNG DANH PC\Documents\GitHub\fun_drawing\fun_drawing\Debug\fun_drawing.exe
+﻿  fun_drawing.cpp
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.h(27,26): error C2065: 'Shape': undeclared identifier
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.h(27,32): error C2059: syntax error: '>'
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\fun_drawing.cpp(7,7): error C2059: syntax error: 'using namespace'
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\fun_drawing.cpp(12,8): error C2039: 'Rectangle': is not a member of 'T'
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.h(13): message : see declaration of 'T'
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\fun_drawing.cpp(12,18): error C2146: syntax error: missing ';' before identifier 'rec'
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\fun_drawing.cpp(12,18): warning C4551: function call missing argument list
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\fun_drawing.cpp(12,18): error C3861: 'rec': identifier not found
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\fun_drawing.cpp(13,5): error C2065: 'rec': undeclared identifier
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\fun_drawing.cpp(14,5): error C2065: 'rec': undeclared identifier
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\fun_drawing.cpp(15,5): error C2065: 'rec': undeclared identifier
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\fun_drawing.cpp(17,8): error C2039: 'Ellipse': is not a member of 'T'
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.h(13): message : see declaration of 'T'
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\fun_drawing.cpp(17,16): error C2146: syntax error: missing ';' before identifier 'ell'
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\fun_drawing.cpp(17,16): warning C4551: function call missing argument list
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\fun_drawing.cpp(17,16): error C3861: 'ell': identifier not found
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\fun_drawing.cpp(18,5): error C2065: 'ell': undeclared identifier
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\fun_drawing.cpp(19,5): error C2065: 'ell': undeclared identifier
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\fun_drawing.cpp(20,5): error C2065: 'ell': undeclared identifier
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\fun_drawing.cpp(22,8): error C2039: 'Line': is not a member of 'T'
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.h(13): message : see declaration of 'T'
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\fun_drawing.cpp(22,13): error C2065: 'Line': undeclared identifier
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\fun_drawing.cpp(22,13): error C2146: syntax error: missing ';' before identifier 'line'
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\fun_drawing.cpp(22,13): error C3861: 'line': identifier not found
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\fun_drawing.cpp(23,5): error C2065: 'line': undeclared identifier
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\fun_drawing.cpp(24,5): error C2065: 'line': undeclared identifier
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\fun_drawing.cpp(25,5): error C2065: 'line': undeclared identifier
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\fun_drawing.cpp(27,8): error C2039: 'Triangle': is not a member of 'T'
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.h(13): message : see declaration of 'T'
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\fun_drawing.cpp(27,17): error C2065: 'Triangle': undeclared identifier
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\fun_drawing.cpp(27,17): error C2146: syntax error: missing ';' before identifier 'tri'
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\fun_drawing.cpp(27,17): error C3861: 'tri': identifier not found
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\fun_drawing.cpp(28,5): error C2065: 'tri': undeclared identifier
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\fun_drawing.cpp(29,5): error C2065: 'tri': undeclared identifier
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\fun_drawing.cpp(30,5): error C2065: 'tri': undeclared identifier
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.h(13): fatal error C1075: '{': no matching token found
+  myClass.cpp
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.h(27,26): error C2065: 'Shape': undeclared identifier
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.h(27,32): error C2059: syntax error: '>'
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(8,7): error C2059: syntax error: 'using namespace'
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(16,17): error C2011: 'T::UIHandler': 'class' type redefinition
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.h(20): message : see declaration of 'T::UIHandler'
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(36,20): error C2011: 'T::InputHandler': 'class' type redefinition
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.h(31): message : see declaration of 'T::InputHandler'
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(55,6): error C2143: syntax error: missing ';' before '*'
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(55,6): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(55,8): error C2653: 'Factory': is not a class or namespace name
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(55,42): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(55,42): error C2059: syntax error: '{'
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(55,42): error C2143: syntax error: missing ';' before '{'
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(55,42): error C2447: '{': missing function header (old-style formal list?)
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(64,6): error C2653: 'Storage': is not a class or namespace name
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(64,15): error C2182: 'addShape': illegal use of type 'void'
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(64,31): error C2065: 'shape': undeclared identifier
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(64,38): error C2143: syntax error: missing ';' before '{'
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(64,38): error C2447: '{': missing function header (old-style formal list?)
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(65,14): error C2059: syntax error: '>'
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(65,16): error C2653: 'Storage': is not a class or namespace name
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(65,44): error C2065: 'shapeList': undeclared identifier
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(68,6): error C2653: 'System': is not a class or namespace name
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(72,9): error C2653: 'System': is not a class or namespace name
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(77,6): error C2653: 'System': is not a class or namespace name
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(81,6): error C2653: 'System': is not a class or namespace name
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(84,6): error C2825: 'T::Shape': must be a class or namespace when followed by '::'
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(84,13): error C2510: 'Shape': left of '::' must be a class/struct/union
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(84,34): error C2065: 'name': undeclared identifier
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(85,6): error C2825: 'T::Shape': must be a class or namespace when followed by '::'
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(85,13): error C2510: 'Shape': left of '::' must be a class/struct/union
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(85,34): error C2065: 'type': undeclared identifier
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(86,6): error C2825: 'T::Shape': must be a class or namespace when followed by '::'
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(86,13): error C2510: 'Shape': left of '::' must be a class/struct/union
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(86,33): error C2065: 'drawSym': undeclared identifier
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(87,8): error C2825: 'T::Shape': must be a class or namespace when followed by '::'
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(87,15): error C2510: 'Shape': left of '::' must be a class/struct/union
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(87,33): error C2065: 'name': undeclared identifier
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(88,8): error C2825: 'T::Shape': must be a class or namespace when followed by '::'
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(88,15): error C2510: 'Shape': left of '::' must be a class/struct/union
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(88,33): error C2065: 'type': undeclared identifier
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(89,6): error C2825: 'T::Shape': must be a class or namespace when followed by '::'
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(89,13): error C2510: 'Shape': left of '::' must be a class/struct/union
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(89,34): error C2065: 'drawSym': undeclared identifier
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(93,1): error C2653: 'Rectangle': is not a class or namespace name
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(93,44): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(94,5): error C2065: 'width': undeclared identifier
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(95,5): error C2065: 'height': undeclared identifier
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(96,1): warning C4508: 'T::Rectangle': function should return a value; 'void' return type assumed
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(97,1): error C2653: 'Rectangle': is not a class or namespace name
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(97,24): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(98,5): error C2065: 'width': undeclared identifier
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(99,5): error C2065: 'height': undeclared identifier
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(100,1): warning C4508: 'T::Rectangle': function should return a value; 'void' return type assumed
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(101,6): error C2653: 'Rectangle': is not a class or namespace name
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(101,38): error C2065: 'width': undeclared identifier
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(102,6): error C2653: 'Rectangle': is not a class or namespace name
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(102,39): error C2065: 'height': undeclared identifier
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(103,9): error C2653: 'Rectangle': is not a class or namespace name
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(103,39): error C2065: 'width': undeclared identifier
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(104,9): error C2653: 'Rectangle': is not a class or namespace name
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(104,40): error C2065: 'height': undeclared identifier
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(105,6): error C2653: 'Rectangle': is not a class or namespace name
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(106,13): error C2065: 'name': undeclared identifier
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(108,32): error C2065: 'height': undeclared identifier
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(110,29): error C2065: 'width': undeclared identifier
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(113,21): error C2065: 'drawSym': undeclared identifier
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(121,1): error C2653: 'Triangle': is not a class or namespace name
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(121,22): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(122,5): error C2065: 'width': undeclared identifier
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(123,5): error C2065: 'height': undeclared identifier
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(124,5): error C2065: 'triType': undeclared identifier
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(125,1): warning C4508: 'T::Triangle': function should return a value; 'void' return type assumed
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(138,1): error C2653: 'Triangle': is not a class or namespace name
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(138,52): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(139,5): error C2065: 'width': undeclared identifier
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(140,5): error C2065: 'height': undeclared identifier
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(141,5): error C2065: 'triType': undeclared identifier
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(142,1): warning C4508: 'T::Triangle': function should return a value; 'void' return type assumed
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(143,6): error C2653: 'Triangle': is not a class or namespace name
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(143,16): error C2084: function 'void T::setWidth(int16_t)' already has a body
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(101): message : see previous definition of 'setWidth'
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(143,37): error C2065: 'width': undeclared identifier
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(144,6): error C2653: 'Triangle': is not a class or namespace name
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(144,16): error C2084: function 'void T::setHeight(int16_t)' already has a body
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(102): message : see previous definition of 'setHeight'
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(144,38): error C2065: 'height': undeclared identifier
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(145,6): error C2653: 'Triangle': is not a class or namespace name
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(145,40): error C2065: 'triType': undeclared identifier
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(146,9): error C2653: 'Triangle': is not a class or namespace name
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(146,19): error C2084: function 'int16_t T::getWidth(void)' already has a body
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(103): message : see previous definition of 'getWidth'
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(146,38): error C2065: 'width': undeclared identifier
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(147,9): error C2653: 'Triangle': is not a class or namespace name
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(147,19): error C2084: function 'int16_t T::getHeight(void)' already has a body
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(104): message : see previous definition of 'getHeight'
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(147,39): error C2065: 'height': undeclared identifier
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(148,8): error C2653: 'Triangle': is not a class or namespace name
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(148,39): error C2065: 'triType': undeclared identifier
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(149,6): error C2653: 'Triangle': is not a class or namespace name
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(149,16): error C2084: function 'void T::draw(void)' already has a body
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(105): message : see previous definition of 'draw'
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(150,13): error C2065: 'name': undeclared identifier
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(152,9): error C2065: 'triType': undeclared identifier
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(153,29): error C2065: 'height': undeclared identifier
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(158,25): error C2065: 'drawSym': undeclared identifier
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(162,14): error C2065: 'triType': undeclared identifier
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(163,19): error C2065: 'width': undeclared identifier
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(164,29): error C2065: 'height': undeclared identifier
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(169,25): error C2065: 'drawSym': undeclared identifier
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(179,1): error C2653: 'Ellipse': is not a class or namespace name
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(179,20): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(180,5): error C2065: 'center': undeclared identifier
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(180,16): error C2065: 'center': undeclared identifier
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(180,27): error C2065: 'width': undeclared identifier
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(180,35): error C2065: 'height': undeclared identifier
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(181,1): warning C4508: 'T::Ellipse': function should return a value; 'void' return type assumed
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(182,1): error C2653: 'Ellipse': is not a class or namespace name
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(182,62): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(183,5): error C2065: 'center': undeclared identifier
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(184,5): error C2065: 'center': undeclared identifier
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(184,11): fatal error C1003: error count exceeds 100; stopping compilation
+  Generating Code...

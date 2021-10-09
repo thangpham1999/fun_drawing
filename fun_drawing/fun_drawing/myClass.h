@@ -17,6 +17,24 @@ namespace T {
         int16_t y;
     };
 
+    class UIHandler {
+    private:
+        int currentY;
+        static UIHandler instance;
+    public:
+        UIHandler(int y);
+        static UIHandler getInstance();
+        void draw(vector<Shape*> shapes);
+        void showOption();
+    };
+
+    class InputHandler {
+    private:
+        string type;
+        int16_t width = -1;
+    public:
+        void getInput();
+
     class Shape {
     protected:
         string name;
@@ -30,7 +48,7 @@ namespace T {
         string getType();
         char getDrawSym();
         //virtual void errorChecking();
-        //virtual void draw();
+        virtual void draw() { ; };
     };
 
     class Factory {
