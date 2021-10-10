@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 #include <windows.h>
+#include <fstream>
 
 using namespace std;
 
@@ -11,6 +12,7 @@ extern COORD destCoord;
 extern int currentY;
 
 vector<string> split(const string& str, const string& delim);
+bool isNumber(const string& str);
 
 namespace T {
 
@@ -23,7 +25,7 @@ namespace T {
     protected:
         string name;
         string type;
-        char drawSym;
+        char drawSym = '\0';
     public:
         static const string shapeType[4];
         void setName(string str);
@@ -37,14 +39,19 @@ namespace T {
         virtual bool isValidAttrb(string attrb) { return TRUE; }
         virtual bool isValidValue(string attrb, string value) { return TRUE; }
         virtual void setAttrb(string attrb, string value) { ; }
+        //virtual string getAttrb(string attrb) { ; }
         virtual void draw() { ; }
+
+        virtual int16_t getWidth() { return 0; }
+        virtual int16_t getHeight() { return 0; }
+        virtual string getTriType() { return 0; }
     };
 
     class Rectangle : public Shape {
     private:
         int16_t width;
         int16_t height;
-        const string attributes[2] = {"Width", "Height"};
+        const string attributes[3] = {"Width", "Height", "DrawSymbol"};
     public:
         Rectangle(int16_t a, int16_t b);
         Rectangle();
@@ -64,8 +71,8 @@ namespace T {
         int16_t width;
         int16_t height;
         string triType;
-        const string attributes[3] = { "Width", "Height", "TriangleType"};
-        const string triangleTypes[2] = { "Isosceles right", "Isosceles" };
+        const string attributes[4] = { "Width", "Height", "TriangleType", "DrawSymbol"};
+        const string triangleTypes[2] = { "IsoscelesRight", "Isosceles" };
     public:
         //Triangle(int16_t w, const string t = "Isosceles right");
         //Triangle(int16_t w, int16_t h, const string t = "Isosceles");
@@ -89,7 +96,7 @@ namespace T {
         Point center;
         int16_t width;
         int16_t height;
-        const string attributes[3] = { "Width", "Height", "Center"};
+        const string attributes[5] = { "Width", "Height", "CenterX", "CenterY", "DrawSymbol"};
     public:
         Ellipse();
         Ellipse(int16_t x, int16_t y, int16_t w, int16_t h);
@@ -109,7 +116,7 @@ namespace T {
     private:
         int16_t len;
         string dir;
-        const string attributes[2] = { "Length", "Direction" };
+        const string attributes[3] = { "Length", "Direction", "DrawSymbol"};
         const string direction[2] = { "Horizontal", "Vertical" };
     public:
         Line();
@@ -128,16 +135,17 @@ namespace T {
     //Presentation Layer
     class UIHandler {
     private:
-        static UIHandler instance;
+        //static UIHandler instance;
+
     public:
-        UIHandler(int y);
-        static UIHandler getInstance();
-        void draw(vector<Shape*> shapes);
-        void showOption();
-        void showGuide(int16_t opt);
+        //UIHandler(int y);
+        //static UIHandler getInstance();
+        static void draw(vector<Shape*> shapes);
+        static void showOption();
+        static void showGuide(int16_t opt);
         static void showMessage(int16_t i);
-        int16_t getOption();
-        string getInputFile();
+        static int16_t getOption();
+        static void draw();
     };
 
     //Business Layer
@@ -146,16 +154,19 @@ namespace T {
         string in;
         string name;
         string type;
-        Shape* shape;
+        Shape* shape = NULL;
+        vector<Shape*> shapes;
         string key;
         string value;
         int16_t status;
-        int16_t handleInputTextLine(string in);
+        int16_t handleInputLine(string in);
         bool END_OBJ = TRUE;
         bool END_TEXT = TRUE;
+        void clearValue();
     public:
-        void handleInputTextAll();
-        void handleInputFile(string path);
+        void handleInputAll();
+        //int16_t handleInputFile();
+        void handleInputFile();
     };
 
     //Data layer

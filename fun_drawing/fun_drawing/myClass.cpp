@@ -32,6 +32,12 @@ vector<string> split(const string& str, const string& delim)
     return res;
 }
 
+bool isNumber(const string& str) {
+    char* ptr;
+    strtol(str.c_str(), &ptr, 10);
+    return *ptr == '\0';
+}
+
 //Methods of 'Shape' class
 const string Shape::shapeType[4] = { "Rectangle", "Triangle", "Ellipse", "Line" };
 
@@ -89,7 +95,7 @@ void Rectangle::draw() {
 }
 
 bool Rectangle::isValidShape() {
-    return (width > 0 && height > 0);
+    return (width > 0 && height > 0 && drawSym != '\0');
 }
 
 bool Rectangle::isValidAttrb(string attrb) {
@@ -99,19 +105,21 @@ bool Rectangle::isValidAttrb(string attrb) {
     return FALSE;
 }
 bool Rectangle::isValidValue(string attrb, string value) {
-    if (attrb == "Width" || attrb == "Height") return (stoi(value) > 0);
+    if (attrb == "Width" || attrb == "Height") return (isNumber(value) && stoi(value) > 0);
+    else if (attrb == "DrawSymbol") return (value.length() == 1);
     else return FALSE;
 }
 void Rectangle::setAttrb(string attrb, string value) {
     if (attrb == "Width") width = stoi(value);
     else if (attrb == "Height") height = stoi(value);
+    else if (attrb == "DrawSymbol") drawSym = value[0];
 }
 
 //Methods of 'Triangle' class
 Triangle::Triangle() {
     width = 0;
     height = 0;
-    triType = "Isosceles right";
+    triType = "";
 }
 
 Triangle::Triangle(int16_t w, int16_t h, string t) {
@@ -128,7 +136,7 @@ string Triangle::getTriType() { return triType; }
 void Triangle::draw() {
     cout << name << " :" << endl;
     currentY++;
-    if (triType == "Isosceles right") {
+    if (triType == "IsoscelesRight") {
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < i + 1; j++) {
                 destCoord.X = j;
@@ -149,13 +157,12 @@ void Triangle::draw() {
             }
         }
     }
-    else cout << "Invalid triangle type" << endl;
     cout << endl;
     currentY = destCoord.Y + 1;
 }
 
 bool Triangle::isValidShape() {
-    return (width > 0 && height > 0 && triType != "");
+    return (width > 0 && height > 0 && triType != "" && drawSym != '\0');
 }
 
 bool Triangle::isValidAttrb(string attrb) {
@@ -165,16 +172,21 @@ bool Triangle::isValidAttrb(string attrb) {
     return FALSE;
 }
 bool Triangle::isValidValue(string attrb, string value) {
-    if (attrb == "Width" || attrb == "Height") return (stoi(value) > 0);
+    if (attrb == "Width" || attrb == "Height") return (isNumber(value) && stoi(value) > 0);
     else if (attrb == "TriangleType") {
-        for (auto i : triangleTypes) return (value == i);
+        for (auto i : triangleTypes) { 
+            if(value == i) return TRUE;
+        }
+        return FALSE;
     }
+    else if (attrb == "DrawSymbol") return (value.length() == 1);
     else return FALSE;
 }
 void Triangle::setAttrb(string attrb, string value) {
     if (attrb == "Width") width = stoi(value);
     else if (attrb == "Height") height = stoi(value);
     else if (attrb == "TriangleType") triType = value;
+    else if (attrb == "DrawSymbol") drawSym = value[0];
 }
 
 
@@ -235,7 +247,7 @@ void Ellipse::draw() {
 }
 
 bool Ellipse::isValidShape() {
-    return (width > 0 && height > 0);
+    return (width > 0 && height > 0 && drawSym != '\0' && center.x > 0 && center.y > 0);
 }
 
 bool Ellipse::isValidAttrb(string attrb) {
@@ -245,9 +257,10 @@ bool Ellipse::isValidAttrb(string attrb) {
     return FALSE;
 }
 bool Ellipse::isValidValue(string attrb, string value) {
-    if (attrb == "Width" || attrb == "Height") return (stoi(value) > 0);
-    else if (attrb == "CenterX") return (width <= 2 * stoi(value));
-    else if (attrb == "CenterY") return (height <= 2 * stoi(value));
+    if (attrb == "Width" || attrb == "Height") return (isNumber(value) && stoi(value) > 0);
+    else if (attrb == "CenterX") return (isNumber(value) && width <= 2 * stoi(value) && stoi(value) > 0);
+    else if (attrb == "CenterY") return (isNumber(value) && height <= 2 * stoi(value) && stoi(value) > 0);
+    else if (attrb == "DrawSymbol") return (value.length() == 1);
     else return FALSE;
 }
 void Ellipse::setAttrb(string attrb, string value) {
@@ -255,6 +268,7 @@ void Ellipse::setAttrb(string attrb, string value) {
     else if (attrb == "Height") height = stoi(value);
     else if (attrb == "CenterX") center.x = stoi(value);
     else if (attrb == "CenterY") center.y = stoi(value);
+    else if (attrb == "DrawSymbol") drawSym = value[0];
 }
 
 //Methods of 'Line' class
@@ -285,7 +299,6 @@ void Line::draw() {
             SetConsoleCursorPosition(hStdout, destCoord);
             cout << drawSym;
         }
-        currentY = destCoord.Y + 1;
     }
     else if (dir == "Vertical") {
         for (int y = 0; y < len; y++) {
@@ -293,15 +306,14 @@ void Line::draw() {
             SetConsoleCursorPosition(hStdout, destCoord);
             cout << drawSym;
         }
-        cout << endl;
-        currentY = destCoord.Y + 1;
     }
-    else cout << "Invalid direction";
+    cout << endl;
+    currentY = destCoord.Y + 1;
 
 }
 
 bool Line::isValidShape() {
-    return (len > 0 && dir != "");
+    return (len > 0 && dir != "" && drawSym != '\0');
 }
 
 bool Line::isValidAttrb(string attrb) {
@@ -311,43 +323,45 @@ bool Line::isValidAttrb(string attrb) {
     return FALSE;
 }
 bool Line::isValidValue(string attrb, string value) {
-    if (attrb == "Length") return (stoi(value) > 0);
+    if (attrb == "Length") return (isNumber(value) && stoi(value) > 0);
     else if (attrb == "Direction") {
         for (auto i : direction) return (value == i);
     }
+    else if (attrb == "DrawSymbol") return (value.length() == 1);
     else return FALSE;
 }
 void Line::setAttrb(string attrb, string value) {
     if (attrb == "Length") len = stoi(value);
     else if (attrb == "Direction") dir = value;
+    else if (attrb == "DrawSymbol") drawSym = value[0];
 
 }
 
 //UIHandler
-UIHandler::UIHandler(int y) { currentY = y; };
+/*UIHandler::UIHandler(int y) { currentY = y; };
 static UIHandler getInstance() {};
 void UIHandler::draw(vector<Shape*> shapes) {
     for (auto shape : shapes) {
         shape->draw();
     }
     currentY = 0;
-}
+}*/
 
 void UIHandler::showOption() {
-    cout << "Menu:\n" << endl << "1. Input text.\n" << "2. Draw.\n" << "3. Open file.\n" << "4. End session.\n";
+    cout << "Menu:\n" << "1. Input text.\n" << "2. Draw.\n" << "3. Open file.\n" << "4. End session.\n";
     cout << "Please enter your option: ";
 }
 
 void UIHandler::showGuide(int16_t opt) {
     switch (opt) {
     case 1:
-        cout << "Please enter your text. Remember these following rules: \n" << "1. Name of objects must be in [] \n 2. Enter 'EO' at the end of each object \n 3. Press 'Ctrl + Z' at the end of your text";
+        cout << "Please enter your text. Remember these following rules: \n" << "1. Name of objects must be in []  \n2. Enter 'ET' at the end of your text\n";
         break;
     case 3:
-        cout << "Please enter your file path: \n";
+        cout << "Please enter your file path: ";
         break;
     case 4:
-        cout << "Exiting";
+        cout << "Exiting...";
         break;
     }
 }
@@ -372,8 +386,20 @@ void UIHandler::showMessage(int16_t i) {
     case -5:
         cout << "Error: Invalid attribute values.\n";
         break;
+    case -6:
+        cout << "Error: Cannot input new object when not complete previous object.\n";
+        break;
+    case -7:
+        cout << "Warning: Your object is not completed. If you exit, your data will be lost? Do you still want to exit? (Y/N) ";
+        break;
+    case -8:
+        cout << "Cannot open your file!.\n";
+        break;
+    case -9:
+        cout << "Your file content is invalid. Please modify it. \n";
+        break;
     default:
-        cout << "Unknown error";
+        cout << "Unknown error.\n";
     }
 }
 
@@ -383,11 +409,16 @@ int16_t UIHandler::getOption() {
     return temp;
 }
 
-/*string UIHandler::getInputText() {
-    string str;
-    getline(cin, str, static_cast<char>(EOF));
-    return str;
-}*/
+
+void UIHandler::draw() {
+    system("cls");
+    vector<Shape*> shapes = Storage::getShape();
+    for (auto i : shapes) {
+        i->draw();
+    }
+    currentY = 0;
+    cout << "\nPress enter to return to menu.";
+}
 
 //Input Handler
 
@@ -403,12 +434,12 @@ int16_t UIHandler::getOption() {
 * return -4: Error: Invalid attributes.
 * return -5: Error: Invalid attribute values.
 * return -6: Error: Cannot input new object when not complete previous object.
-* return -7: Warning: Your object is not completed. Do you still want to exit? (Y/N)
+* return -7: Warning: Your object is not completed. If you exit, your data will be lost? Do you still want to exit? (Y/N)
 */
-int16_t InputHandler::handleInputTextLine(string in) {
+int16_t InputHandler::handleInputLine(string in) {
 
-    if (in[0] == static_cast<char>(EOF)) {
-        if (!END_OBJ) return -7;
+    if (in == "ET") {
+        if (shape != NULL) {return -7; }
         else {
             END_TEXT = TRUE;
             return 4;
@@ -419,6 +450,7 @@ int16_t InputHandler::handleInputTextLine(string in) {
             if (END_OBJ) {
                 for (uint16_t i = 1; i < in.length() - 1; i++) { name += in[i]; } //assign name
                 END_OBJ = FALSE;
+                //cout << "Object init: " << name << endl;
                 return 1;
             }
             else return -6;
@@ -426,13 +458,14 @@ int16_t InputHandler::handleInputTextLine(string in) {
         else {
             key = split(in, " = ")[0];
             value = split(in, " = ")[1];
-            //Input: Type = Rectangle
-            if (key == "Type") { //start of shape type
+            if (key == "Type") {
                 if (name == "") return -1; //if no name is inputted previously
                 else {
                     if (Shape::isValidShapeType(value)) {
                         type = value;
                         shape = Factory::createShape(type);
+                        shape->setName(name);
+                        shape->setType(type);          
                         return 2;
                     }
                     else return -3;
@@ -444,6 +477,8 @@ int16_t InputHandler::handleInputTextLine(string in) {
                     if (shape->isValidAttrb(key)) {
                         if (shape->isValidValue(key, value)) {
                             shape->setAttrb(key, value);
+                            cout << "Attribute init: " << key << " = " << value << endl;
+                            cout << "Shape's attribute: " << shape->getHeight() << ' ' << shape->getWidth() << ' ' << shape->getTriType() << endl;
                             if (shape->isValidShape()) {
                                 Storage::addShape(shape);
                                 END_OBJ = TRUE;
@@ -451,7 +486,7 @@ int16_t InputHandler::handleInputTextLine(string in) {
                                 type.clear();
                                 key.clear();
                                 value.clear();
-                                Factory::deleteShape(shape);
+                                shape = NULL;
                                 return 0;
                             }
                             else return 3;
@@ -465,12 +500,12 @@ int16_t InputHandler::handleInputTextLine(string in) {
     }
 }
 
-void InputHandler::handleInputTextAll() {
+void InputHandler::handleInputAll() {
     END_TEXT = FALSE;
     do {
         getline(cin, in);
-        status = handleInputTextLine(in);
-        if (status <= -1 && status >= -6) UIHandler::showMessage(status);
+        status = handleInputLine(in);
+        if (status <= 0 && status >= -7) UIHandler::showMessage(status);
         if (status == -7) {
             getline(cin, in);
             if (in == "Y") {
@@ -481,11 +516,99 @@ void InputHandler::handleInputTextAll() {
                 key.clear();
                 value.clear();
                 Factory::deleteShape(shape);
+                system("cls");
+                break;
             }
-            else;
+            else if (in == "N") { ; }
         }
     } while (status != 4);
+}
 
+void InputHandler::clearValue() {
+    name.clear();
+    type.clear();
+    key.clear();
+    value.clear();
+    END_OBJ = TRUE;
+    END_TEXT = TRUE;
+    Factory::deleteShape(shape);
+    for (auto i : shapes) { delete(i); }
+    shape = NULL;
+}
+
+
+/*int16_t InputHandler::handleInputFile() {
+    string path;
+    getline(cin, path);
+    fstream myFile;
+    myFile.open(path, ios::out);
+    if (!myFile) 
+        return -1;
+    else {
+        while (getline(myFile, in)) {
+            if (in[0] == '[') {
+                if (END_OBJ) {
+                    for (uint16_t i = 1; i < in.length() - 1; i++) { name += in[i]; }
+                    END_OBJ = FALSE;
+                }
+                else { clearValue(); return -2; }
+            }
+            else {
+                key = split(in, " = ")[0];
+                value = split(in, " = ")[1];
+                if (key == "Type") {
+                    if (name == "") { clearValue();  return -2; }
+                    else {
+                        if (Shape::isValidShapeType(value)) {
+                            type = value;
+                            shape = Factory::createShape(type);
+                            shape->setName(name);
+                            shape->setType(type);
+                        }
+                        else { clearValue(); return -2; }
+                    }
+                }
+                else {
+                    if (type == "") { clearValue();  return -2; }
+                    else {
+                        if (shape->isValidAttrb(key)) {
+                            if (shape->isValidValue(key, value)) {
+                                shape->setAttrb(key, value);
+                                if (shape->isValidShape()) {
+                                    shapes.push_back(shape);
+                                    END_OBJ = TRUE;
+                                    name.clear();
+                                    type.clear();
+                                    key.clear();
+                                    value.clear();
+                                    shape = NULL;
+                                }
+                            }
+                            else { clearValue(); return -2; }
+                        }
+                        else { clearValue(); return -2; }
+                    }
+                }
+            }
+        }
+        for (auto i : shapes) { Storage::addShape(i); }
+        myFile.close();
+        return 0;
+    }
+}*/
+
+void InputHandler::handleInputFile() {
+    string path;
+    getline(cin, path);
+    ifstream myFile;
+    myFile.open(path, ios::out);
+    if (!myFile) UIHandler::showMessage(-8);
+    else {
+        cout << "Read file successfully.\n\n";
+        while (getline(myFile, in)) {
+            handleInputLine(in);
+        }
+    }
 }
 
 //Methods of Factory class
@@ -505,3 +628,5 @@ void Factory::deleteShape(Shape* shape) {
 vector<Shape*> Storage::shapeList;
 void Storage::addShape(Shape* shape) { shapeList.push_back(shape); }
 vector<Shape*> Storage::getShape() { return shapeList; }
+
+//add function clearShape()
