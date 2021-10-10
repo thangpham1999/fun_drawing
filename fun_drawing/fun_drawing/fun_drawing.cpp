@@ -29,7 +29,6 @@ int main(void)
     tri.setDrawSym('*');
     tri.draw();*/
 
-
 }
 
 

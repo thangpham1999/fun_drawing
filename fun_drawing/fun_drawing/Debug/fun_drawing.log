@@ -1,5 +1,6 @@
 ﻿  fun_drawing.cpp
   myClass.cpp
-C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(56,34): error C2084: function 'std::string T::UIHandler::getInputText(void)' already has a body
-C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(50): message : see previous definition of 'getInputText'
   Generating Code...
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(173): warning C4715: 'T::Triangle::isValidValue': not all control paths return a value
+C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\fun_drawing\myClass.cpp(319): warning C4715: 'T::Line::isValidValue': not all control paths return a value
+  fun_drawing.vcxproj -> C:\Users\Admin\Documents\GitHub\fun_drawing\fun_drawing\Debug\fun_drawing.exe
