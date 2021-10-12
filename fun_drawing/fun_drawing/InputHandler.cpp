@@ -55,8 +55,8 @@ int16_t InputHandler::handleInputLine(string in) {
                     if (shape->isValidAttrb(key)) {
                         if (shape->isValidValue(key, value)) {
                             shape->setAttrb(key, value);
-                            cout << "Attribute init: " << key << " = " << value << endl;
-                            cout << "Shape's attribute: " << shape->getHeight() << ' ' << shape->getWidth() << ' ' << shape->getTriType() << endl;
+                            //cout << "Attribute init: " << key << " = " << value << endl;
+                            //cout << "Shape's attribute: " << shape->getHeight() << ' ' << shape->getWidth() << ' ' << shape->getTriType() << endl;
                             if (shape->isValidShape()) {
                                 Storage::addShape(shape);
                                 END_OBJ = TRUE;
@@ -102,7 +102,7 @@ void InputHandler::handleInputAll() {
     } while (status != 4);
 }
 
-void InputHandler::clearValue() {
+/*void InputHandler::clearValue() {
     name.clear();
     type.clear();
     key.clear();
@@ -112,7 +112,7 @@ void InputHandler::clearValue() {
     Factory::deleteShape(shape);
     for (auto i : shapes) { delete(i); }
     shape = NULL;
-}
+}*/
 
 
 /*int16_t InputHandler::handleInputFile() {

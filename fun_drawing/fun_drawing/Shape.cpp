@@ -4,6 +4,7 @@ HANDLE hStdout = GetStdHandle(STD_OUTPUT_HANDLE);
 COORD destCoord;
 int currentY = 0;
 
+//------------------------------------------------------------
 //Methods of 'Shape' class
 const string Shape::shapeType[4] = { "Rectangle", "Triangle", "Ellipse", "Line" };
 
@@ -26,20 +27,20 @@ bool Shape::isValidShapeType(string shapeType) {
     return FALSE;
 }
 
-
+//------------------------------------------------------------
 //Methods of 'Rectangle' class
-
 Rectangle::Rectangle(int16_t a, int16_t b) {
     width = a;
     height = b;
 }
+
 Rectangle::Rectangle() {
     width = 0;
     height = 0;
 }
-void Rectangle::setWidth(int16_t w) { width = w; }
+//void Rectangle::setWidth(int16_t w) { width = w; }
 
-void Rectangle::setHeight(int16_t h) { height = h; }
+//void Rectangle::setHeight(int16_t h) { height = h; }
 
 int16_t Rectangle::getWidth() { return width; }
 
@@ -81,6 +82,7 @@ void Rectangle::setAttrb(string attrb, string value) {
     else if (attrb == "DrawSymbol") drawSym = value[0];
 }
 
+//------------------------------------------------------------
 //Methods of 'Triangle' class
 Triangle::Triangle() {
     width = 0;
@@ -93,9 +95,9 @@ Triangle::Triangle(int16_t w, int16_t h, string t) {
     height = h;
     triType = t;
 }
-void Triangle::setWidth(int16_t w) { width = w; }
-void Triangle::setHeight(int16_t h) { height = h; }
-void Triangle::setTriType(string str) { triType = str; }
+//void Triangle::setWidth(int16_t w) { width = w; }
+//void Triangle::setHeight(int16_t h) { height = h; }
+//void Triangle::setTriType(string str) { triType = str; }
 int16_t Triangle::getWidth() { return width; }
 int16_t Triangle::getHeight() { return height; }
 string Triangle::getTriType() { return triType; }
@@ -155,7 +157,7 @@ void Triangle::setAttrb(string attrb, string value) {
     else if (attrb == "DrawSymbol") drawSym = value[0];
 }
 
-
+//------------------------------------------------------------
 //Methods of 'Ellipse' class
 Ellipse::Ellipse() {
     center.x = center.y = width = height = 0;
@@ -166,14 +168,15 @@ Ellipse::Ellipse(int16_t x, int16_t y, int16_t w, int16_t h) {
     width = w;
     height = h;
 }
-void Ellipse::setCenter(int16_t x, int16_t y) {
+/*void Ellipse::setCenter(int16_t x, int16_t y) {
     center.x = x;
     center.y = y;
 }
 void Ellipse::setAxisLen(int16_t x, int16_t y) {
     width = x;
     height = y;
-}
+}*/
+
 Point Ellipse::getCenter() { return center; }
 int16_t Ellipse::getWidth() { return width; }
 int16_t Ellipse::getHeight() { return height; }
@@ -237,6 +240,7 @@ void Ellipse::setAttrb(string attrb, string value) {
     else if (attrb == "DrawSymbol") drawSym = value[0];
 }
 
+//------------------------------------------------------------
 //Methods of 'Line' class
 Line::Line() {
     len = 0;
@@ -246,12 +250,13 @@ Line::Line(int16_t l, string d) {
     len = l;
     dir = d;
 }
-void Line::setLen(int16_t num) {
+/*void Line::setLen(int16_t num) {
     len = num;
 }
 void Line::setDir(string str) {
     dir = str;
-}
+}*/
+
 int16_t Line::getLen() { return len; }
 string Line::getDir() { return dir; }
 void Line::draw() {

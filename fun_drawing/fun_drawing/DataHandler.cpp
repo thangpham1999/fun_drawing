@@ -2,8 +2,8 @@
 
 Shape* Factory::createShape(string type) {
     if (type == "Triangle") return new Triangle;
-    else if (type == "Rectangle") return new Rectangle;
-    else if (type == "Ellipse") return new Ellipse;
+    //else if (type == "Rectangle") return new Rectangle;
+    //else if (type == "Ellipse") return new Ellipse;
     else if (type == "Line") return new Line;
     else return NULL;
 }

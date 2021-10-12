@@ -20,7 +20,7 @@ private:
     int16_t handleInputLine(string in);
     bool END_OBJ = TRUE;
     bool END_TEXT = TRUE;
-    void clearValue();
+    //void clearValue();
 public:
     void handleInputAll();
     //int16_t handleInputFile();
