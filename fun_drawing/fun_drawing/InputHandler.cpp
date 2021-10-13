@@ -13,11 +13,12 @@
 * return -5: Error: Invalid attribute values.
 * return -6: Error: Cannot input new object when not complete previous object.
 * return -7: Warning: Your object is not completed. If you exit, your data will be lost? Do you still want to exit? (Y/N)
+* return -8: Error: This name already exists.
 */
 int16_t InputHandler::handleInputLine(string in) {
 
     if (in == "ET") {
-        if (shape != NULL) { return -7; }
+        if (shape != NULL || !END_OBJ) { return -7; }
         else {
             END_TEXT = TRUE;
             return 4;
@@ -26,7 +27,12 @@ int16_t InputHandler::handleInputLine(string in) {
     else {
         if (in[0] == '[') {
             if (END_OBJ) {
-                for (uint16_t i = 1; i < in.length() - 1; i++) { name += in[i]; } //assign name
+                for (uint16_t i = 1; i < in.length() - 1; i++) { 
+                    name += in[i]; 
+                    for (auto shape : Storage::getShape()) {
+                        if (name == shape->getName()) return -8;
+                    }
+                }
                 END_OBJ = FALSE;
                 //cout << "Object init: " << name << endl;
                 return 1;
@@ -83,7 +89,7 @@ void InputHandler::handleInputAll() {
     do {
         getline(cin, in);
         status = handleInputLine(in);
-        if (status <= 0 && status >= -7) UIHandler::showMessage(status);
+        if (status <= 0) UIHandler::showMessage(status);
         if (status == -7) {
             getline(cin, in);
             if (in == "Y") {
@@ -180,7 +186,7 @@ void InputHandler::handleInputFile() {
     getline(cin, path);
     ifstream myFile;
     myFile.open(path, ios::out);
-    if (!myFile) UIHandler::showMessage(-8);
+    if (!myFile) UIHandler::showMessage(-9);
     else {
         cout << "Read file successfully.\n\n";
         while (getline(myFile, in)) {

@@ -29,6 +29,7 @@ bool Shape::isValidShapeType(string shapeType) {
 
 //------------------------------------------------------------
 //Methods of 'Rectangle' class
+/*
 Rectangle::Rectangle(int16_t a, int16_t b) {
     width = a;
     height = b;
@@ -168,14 +169,6 @@ Ellipse::Ellipse(int16_t x, int16_t y, int16_t w, int16_t h) {
     width = w;
     height = h;
 }
-/*void Ellipse::setCenter(int16_t x, int16_t y) {
-    center.x = x;
-    center.y = y;
-}
-void Ellipse::setAxisLen(int16_t x, int16_t y) {
-    width = x;
-    height = y;
-}*/
 
 Point Ellipse::getCenter() { return center; }
 int16_t Ellipse::getWidth() { return width; }
@@ -250,12 +243,7 @@ Line::Line(int16_t l, string d) {
     len = l;
     dir = d;
 }
-/*void Line::setLen(int16_t num) {
-    len = num;
-}
-void Line::setDir(string str) {
-    dir = str;
-}*/
+
 
 int16_t Line::getLen() { return len; }
 string Line::getDir() { return dir; }
@@ -309,3 +297,4 @@ void Line::setAttrb(string attrb, string value) {
     else if (attrb == "DrawSymbol") drawSym = value[0];
 
 }
+*/

@@ -46,9 +46,12 @@ void UIHandler::showMessage(int16_t i) {
         cout << "Warning: Your object is not completed. If you exit, your data will be lost? Do you still want to exit? (Y/N) ";
         break;
     case -8:
-        cout << "Cannot open your file!.\n";
+        cout << "This name already exists. Please input another name.\n";
         break;
     case -9:
+        cout << "Cannot open your file!.\n";
+        break;
+    case -10:
         cout << "Your file content is invalid. Please modify it. \n";
         break;
     default:

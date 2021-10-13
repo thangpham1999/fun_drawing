@@ -35,7 +35,7 @@ public:
     virtual string getTriType() { return ""; }
 };
 
-class Rectangle : public Shape {
+/*class Rectangle : public Shape {
 private:
     int16_t width;
     int16_t height;
@@ -118,6 +118,6 @@ public:
     bool isValidAttrb(string attrb);
     bool isValidValue(string attrb, string value);
     void setAttrb(string attrb, string value);
-};
+};*/
 
 #endif

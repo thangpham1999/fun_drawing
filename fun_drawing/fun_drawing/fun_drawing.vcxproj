@@ -143,12 +143,20 @@
     <ClCompile Include="Shape.cpp" />
     <ClCompile Include="fun_drawing.cpp" />
     <ClCompile Include="DataHandler.cpp" />
+    <ClCompile Include="Rectangle.cpp" />
+    <ClCompile Include="Line.cpp" />
+    <ClCompile Include="Ellipse.cpp" />
+    <ClCompile Include="Triangle.cpp" />
     <ClCompile Include="UIHandler.cpp" />
     <ClCompile Include="InputHandler.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="fun_drawing.h" />
     <ClInclude Include="DataHandler.h" />
+    <ClInclude Include="Rectangle.h" />
+    <ClInclude Include="Triangle.h" />
+    <ClInclude Include="Ellipse.h" />
+    <ClInclude Include="Line.h" />
     <ClInclude Include="UIHandler.h" />
     <ClInclude Include="InputHandler.h" />
     <ClInclude Include="Shape.h" />

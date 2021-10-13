@@ -1,4 +1,8 @@
 #include "DataHandler.h"
+#include "Rectangle.h"
+#include "Ellipse.h"
+#include "Triangle.h"
+#include "Line.h"
 
 Shape* Factory::createShape(string type) {
     if (type == "Triangle") return new Triangle;
