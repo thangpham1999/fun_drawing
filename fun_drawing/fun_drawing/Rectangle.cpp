@@ -1,11 +1,11 @@
 #include "Rectangle.h"
 
-Rectangle::Rectangle(int16_t a, int16_t b) {
+Rec::Rec(int16_t a, int16_t b) {
     width = a;
     height = b;
 }
 
-Rectangle::Rectangle() {
+Rec::Rec() {
     width = 0;
     height = 0;
 }
@@ -13,11 +13,11 @@ Rectangle::Rectangle() {
 
 //void Rectangle::setHeight(int16_t h) { height = h; }
 
-int16_t Rectangle::getWidth() { return width; }
+int16_t Rec::getWidth() { return width; }
 
-int16_t Rectangle::getHeight() { return height; }
+int16_t Rec::getHeight() { return height; }
 
-void Rectangle::draw() {
+void Rec::draw() {
     cout << name << " :" << endl;
     currentY++;
     for (int i = currentY; i < height + currentY; i++) {
@@ -32,22 +32,22 @@ void Rectangle::draw() {
     currentY = destCoord.Y + 1;
 }
 
-bool Rectangle::isValidShape() {
+bool Rec::isValidShape() {
     return (width > 0 && height > 0 && drawSym != '\0');
 }
 
-bool Rectangle::isValidAttrb(string attrb) {
+bool Rec::isValidAttrb(string attrb) {
     for (auto i : attributes) {
         if (i == attrb) return TRUE;
     }
     return FALSE;
 }
-bool Rectangle::isValidValue(string attrb, string value) {
+bool Rec::isValidValue(string attrb, string value) {
     if (attrb == "Width" || attrb == "Height") return (isNumber(value) && stoi(value) > 0);
     else if (attrb == "DrawSymbol") return (value.length() == 1);
     else return FALSE;
 }
-void Rectangle::setAttrb(string attrb, string value) {
+void Rec::setAttrb(string attrb, string value) {
     if (attrb == "Width") width = stoi(value);
     else if (attrb == "Height") height = stoi(value);
     else if (attrb == "DrawSymbol") drawSym = value[0];

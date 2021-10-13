@@ -3,15 +3,15 @@
 #ifndef Ellipse_H
 #define Ellipse_H
 
-class Ellipse : public Shape {
+class Ell : public Shape {
 private:
     Point center;
     int16_t width;
     int16_t height;
     const string attributes[5] = { "Width", "Height", "CenterX", "CenterY", "DrawSymbol" };
 public:
-    Ellipse();
-    Ellipse(int16_t x, int16_t y, int16_t w, int16_t h);
+    Ell();
+    Ell(int16_t x, int16_t y, int16_t w, int16_t h);
     //void setCenter(int16_t x, int16_t y);
     //void setAxisLen(int16_t x, int16_t y);
     Point getCenter();
