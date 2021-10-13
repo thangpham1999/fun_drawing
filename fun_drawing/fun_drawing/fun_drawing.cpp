@@ -9,7 +9,7 @@ using namespace T;
 
 int main(void)
 {
-    T::Rectangle rec(5,3);
+    /*T::Rectangle rec(5, 3);
     rec.setName("Object 1");
     rec.setDrawSym('+');
     rec.draw();
@@ -22,22 +22,50 @@ int main(void)
     T::Line line(5, "Vertical");
     line.setName("Object 3");
     line.setDrawSym('-');
-    line.draw();
+    line.draw();*/
 
-    T::Triangle tri(9, 5, "Isosceles");
+    /*T::Triangle tri(9, 5, "Isosceles right");
     tri.setName("Object 4");
     tri.setDrawSym('*');
-    tri.draw();
+    tri.draw();*/
+
+    /*string s;
+    InputHandler IH;
+    IH.handleInputFile();
+    getline(cin, s);
+    system("cls");
+    UIHandler::draw();*/
+    
+    InputHandler IH;
+    int16_t opt;
+    string waiting;
+
+    do {
+        UIHandler::showOption();
+        opt = UIHandler::getOption();
+        cin.ignore();
+        UIHandler::showGuide(opt);
+        switch (opt) {
+        case 1:
+            IH.handleInputAll();
+            break;
+        case 2:
+            UIHandler::draw();
+            getline(cin, waiting);
+            system("cls");
+            break;
+        case 3:
+            IH.handleInputFile();
+            break;
+        case 4:
+            break;
+        default:
+            cout << "Invalid option. Please re-enter your option.\n";
+        }
+    } while (opt != 4);
+
+
 }
 
 
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
+//
