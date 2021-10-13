@@ -1,19 +1,19 @@
 #include "Ellipse.h"
 
-Ellipse::Ellipse() {
+Ell::Ell() {
     center.x = center.y = width = height = 0;
 }
-Ellipse::Ellipse(int16_t x, int16_t y, int16_t w, int16_t h) {
+Ell::Ell(int16_t x, int16_t y, int16_t w, int16_t h) {
     center.x = x;
     center.y = y;
     width = w;
     height = h;
 }
 
-Point Ellipse::getCenter() { return center; }
-int16_t Ellipse::getWidth() { return width; }
-int16_t Ellipse::getHeight() { return height; }
-void Ellipse::draw() {
+Point Ell::getCenter() { return center; }
+int16_t Ell::getWidth() { return width; }
+int16_t Ell::getHeight() { return height; }
+void Ell::draw() {
     cout << name << " :" << endl;
     currentY++;
     for (int i = 0; i < width; i++)
@@ -48,24 +48,24 @@ void Ellipse::draw() {
     SetConsoleCursorPosition(hStdout, destCoord);
 }
 
-bool Ellipse::isValidShape() {
+bool Ell::isValidShape() {
     return (width > 0 && height > 0 && drawSym != '\0' && center.x > 0 && center.y > 0);
 }
 
-bool Ellipse::isValidAttrb(string attrb) {
+bool Ell::isValidAttrb(string attrb) {
     for (auto i : attributes) {
         if (i == attrb) return TRUE;
     }
     return FALSE;
 }
-bool Ellipse::isValidValue(string attrb, string value) {
+bool Ell::isValidValue(string attrb, string value) {
     if (attrb == "Width" || attrb == "Height") return (isNumber(value) && stoi(value) > 0);
     else if (attrb == "CenterX") return (isNumber(value) && width <= 2 * stoi(value) && stoi(value) > 0);
     else if (attrb == "CenterY") return (isNumber(value) && height <= 2 * stoi(value) && stoi(value) > 0);
     else if (attrb == "DrawSymbol") return (value.length() == 1);
     else return FALSE;
 }
-void Ellipse::setAttrb(string attrb, string value) {
+void Ell::setAttrb(string attrb, string value) {
     if (attrb == "Width") width = stoi(value);
     else if (attrb == "Height") height = stoi(value);
     else if (attrb == "CenterX") center.x = stoi(value);
