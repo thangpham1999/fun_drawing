@@ -4,6 +4,7 @@
 #include "Triangle.h"
 #include "Line.h"
 
+
 Shape* Factory::createShape(string type) {
     if (type == "Triangle") return new Triangle;
     else if (type == "Rectangle") return new Rec;

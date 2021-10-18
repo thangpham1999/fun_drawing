@@ -4,6 +4,8 @@
 vector<string> split(const string& str, const string& delim)
 {
     vector<string> res;
+    string s;
+
     if ("" == str)
         return res;
     char* strs = new char[str.length() + 1];
@@ -14,10 +16,10 @@ vector<string> split(const string& str, const string& delim)
 
     char* p = strtok(strs, d);
     while (p) {
-        string s = p;
-        res.push_back(s);
-        p = strtok(NULL, d);
-    }
+            s = p;
+            res.push_back(s);
+            p = strtok(NULL, d);
+        }
     return res;
 }
 

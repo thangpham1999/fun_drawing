@@ -2,6 +2,7 @@
 #include "DataHandler.h"
 #include "UIHandler.h"
 #include <fstream>
+#include <map>
 using namespace std;
 
 #ifndef InputHandler_H
@@ -9,21 +10,29 @@ using namespace std;
 
 class InputHandler {
 private:
-    string in;
+    
+    //Lazy init of Singleton
+    static InputHandler* instance;
+    InputHandler() { ; };
+
+    string filePath;
+    ifstream myFile;
+    string fileLine;
     string name;
     string type;
     Shape* shape = NULL;
     vector<Shape*> shapes;
-    string key;
-    string value;
-    int16_t status;
-    int16_t handleInputLine(string in);
+    string key = "";
+    string value = "";
+    map<int16_t, int16_t> errors;
+    map<string, bool> shapeStatuses;
+    
     bool END_OBJ = TRUE;
-    bool END_TEXT = TRUE;
     //void clearValue();
 public:
-    void handleInputAll();
-    //int16_t handleInputFile();
+
+    static InputHandler* getInstance();
+    int16_t handleInputLine(string in);
     void handleInputFile();
 };
 
