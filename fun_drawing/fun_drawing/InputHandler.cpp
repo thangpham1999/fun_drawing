@@ -21,7 +21,7 @@ InputHandler* InputHandler::getInstance() {
 * return -6: Error: This name already exists.
 * return -7: Error: Wrong input format.
 */
-int16_t InputHandler::handleInputLine(string in) {
+int16_t InputHandler::handleInputLine(string userInput) {
     if (in[0] == '[') {
         name.clear();
         type.clear();
