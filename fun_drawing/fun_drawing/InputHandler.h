@@ -1,6 +1,5 @@
 #include "Shape.h"
 #include "DataHandler.h"
-#include "UIHandler.h"
 #include <fstream>
 #include <map>
 using namespace std;
@@ -28,12 +27,24 @@ private:
     map<string, bool> shapeStatuses;
     
     bool END_OBJ = TRUE;
+
+   
     //void clearValue();
+
+    
 public:
 
     static InputHandler* getInstance();
-    int16_t handleInputLine(string in);
+
     void handleInputFile();
+
+    int16_t splitLine(string userInput);
+    void filterAndSaveData();
+
+    vector<map<string, string>> rawData;
+    map<string, string> mapData;
+
+    void handleInvalidShapes();
 };
 
 #endif

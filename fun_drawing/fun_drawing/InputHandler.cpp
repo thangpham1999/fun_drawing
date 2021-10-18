@@ -1,5 +1,7 @@
 #include "InputHandler.h"
 
+//C:\Users\ADMIN\Desktop\TestData\TD3.txt
+
 InputHandler* InputHandler::instance = NULL; //definition of static member.
 
 InputHandler* InputHandler::getInstance() {
@@ -8,73 +10,121 @@ InputHandler* InputHandler::getInstance() {
 }
 
 
-/*
-* return 3: Attribute value is inputted successfully.
-* return 2: Type is inputted succesfully
-* return 1: Name is inputted successfully,
-* return 0: Shape is created successfully.
-* return -1: Error: Name must be inputted first.
-* return -2: Error: Type must be inputted right after Name and before Attributes
-* return -3: Error: Invalid shape type.
-* return -4: Error: Invalid attributes.
-* return -5: Error: Invalid attribute values.
-* return -6: Error: This name already exists.
-* return -7: Error: Wrong input format.
-*/
-int16_t InputHandler::handleInputLine(string userInput) {
-    if (in[0] == '[') {
+int16_t InputHandler::splitLine(string userInput) {
+    if (userInput[0] == '[') {
+        if (name != "") {
+            rawData.push_back(mapData);
+            mapData.clear();
+        }
         name.clear();
         type.clear();
         key.clear();
         value.clear();
-        for (uint16_t i = 1; i < in.length() - 1; i++) {
-            name += in[i];  
+        for (uint16_t i = 1; i < userInput.length() - 1; i++) {
+            name += userInput[i];
         }
-        for (auto shape : Storage::getShape()) {
-            if (name == shape->getName()) {
-                return -6;
-            }
-        }
+        mapData.insert(pair<string, string>("Name", name));
         return 1;
     }
     else {
+        //If there is no name inputted at the beginning, ignore until [...] read.
         if (name.empty()) return -1;
         else {
-            if (in.find(" = ") == string::npos)
-                return -7;
+            if (split(userInput, " = ").size() != 2)
+                return -2;
             else {
-                key = split(in, " = ")[0];
-                value = split(in, " = ")[1];
-                if (key == "Type") {
-                        if (Shape::isValidShapeType(value)) {
-                            type = value;
-                            shape = Factory::createShape(type);
-                            shape->setName(name);
-                            shape->setType(type);
-                            return 2;
+                key = split(userInput, " = ")[0];
+                value = split(userInput, " = ")[1];
+                mapData.insert(pair<string, string>(key, value));
+                return 0;
+            }
+        }
+    }
+}
+
+void InputHandler::filterAndSaveData() {
+    for (uint16_t i = 0; i < rawData.size(); i++) {
+        shape = Factory::createShape(rawData[i]["Type"]);
+        shape->setName(rawData[i]["Name"]);
+        shape->setType(rawData[i]["Type"]);
+        if (!Shape::isValidShapeType(rawData[i]["Type"]))
+            continue;
+
+        for (std::map<string, string>::iterator itr = rawData[i].begin(); itr != rawData[i].end(); itr++) {
+            if (itr->first == "Name" || itr->first == "Type")
+                continue;
+            else {
+                if (shape->isValidAttrb(itr->first))
+                    if (shape->isValidValue(itr->first, itr->second))
+                        shape->setAttrb(itr->first, itr->second);
+            }
+        }
+
+        bool sameNameFlag = FALSE;
+
+        if (shape->isValidShape()) {
+            for (int j = 0; j < Storage::getShape().size(); j++) {
+                if (Storage::getShape()[j]->getName() == rawData[i]["Name"]) {
+                    sameNameFlag = TRUE;
+                    char q = '\0';
+                    while (q != 'Y' && q != 'N') {
+                        cout << "'" << rawData[j]["Name"] << "' already exists. Do you want to overwrite? (Y/N)  ";
+                        cin >> q;
+
+                        if (q == 'Y') {
+                            vector<Shape*>::iterator itr = Storage::getShape().begin() + j;
+                            delete(Storage::getShape()[j]);
+                            Storage::getShape().erase(itr);
+                            rawData.erase(rawData.begin() + i);
+                            Storage::addShape(shape);
+                            i--;
+                            j--;
                         }
-                        else return -3;
-                }
-                else {
-                    if (type.empty()) return -2;
-                    else {
-                        if (shape->isValidAttrb(key)) {
-                            if (shape->isValidValue(key, value)) {
-                                shape->setAttrb(key, value);
-                                if (shape->isValidShape()) {
-                                    Storage::addShape(shape);
-                                    END_OBJ = TRUE;
-                                    shape = NULL;
-                                    return 0;
-                                }
-                                else return 3;
-                            }
-                            else return -5;
-                        }
-                        else return -4;
+                        else if (q == 'N')
+                            rawData.erase(rawData.begin() + i);
                     }
+                    break;
                 }
             }
+            if (!sameNameFlag) {
+                rawData.erase(rawData.begin() + i);
+                Storage::addShape(shape);
+                i--;
+            }
+        }
+    }
+}
+
+void InputHandler::handleInvalidShapes() {
+    for (auto map : rawData) {
+        cout << endl << map["Name"] << ": failed to draw due to following error(s):" << endl;
+        if (Shape::isValidShapeType(map["Type"])) {
+            shape = Factory::createShape(map["Type"]);
+            for (std::map<string, string>::iterator itr = map.begin(); itr != map.end(); itr++) {
+                if (itr->first == "Name" || itr->first == "Type")
+                    continue;
+                else {
+                    if (!shape->isValidAttrb(itr->first));
+                        //cout << "\t+ Warning: '" << itr->first << "' is not an attribute of type '" << map["Type"] << "'.";
+                    else {
+                        shape->setAttrb(itr->first, itr->second);
+                        if (!shape->isValidValue(itr->first, itr->second))
+                            cout << "\t+ Invalid value for '" << itr->first << "': " << itr->second << "." << endl; 
+                            //cout << "'" << itr->first << "' must be a positive integer.\n";
+                    }    
+                }
+            }
+            if (shape->emptyAttrbs().size() > 0) {
+                cout << "\t+ Attribute(s) is(are) missing value:    ";
+                for (auto emptyAttrb : shape->emptyAttrbs()) {
+                    cout << "'" << emptyAttrb << "'    ";
+                }
+                cout << endl;
+            }
+        }
+        else {
+            cout << "\t+ Invalid shape type: '" << map["Type"];
+            cout << "'. Shape type must be one of the following types: Rectangle, Triangle, Ellipse or Line.\n";
         }
     }
 }
@@ -87,48 +137,18 @@ void InputHandler::handleInputFile() {
     ifstream myFile;
     bool isValidShape = FALSE;
     myFile.open(filePath, ios::out);
-    if (!myFile) UIHandler::showMessage(-8);
+    if (!myFile) cout << "Cannot open file!\n";
     else {
         cout << "\nOpen file successfully.\n\n";
 
         while (getline(myFile, fileLine)) {
             currentLine++;
-            preName = name;
-            status = handleInputLine(fileLine);
-            if (status < 0)
-                errors.insert(pair<int16_t, int16_t>(currentLine, status));
-            else if (status == 0) {
-                isValidShape = TRUE;
-                shapeStatuses.insert(pair<string, bool>(preName, TRUE));
-            }
-            if (status == 1 && isValidShape == FALSE && preName != "") {
-                shapeStatuses.insert(pair<string, bool>(preName, FALSE));
-                isValidShape = FALSE;
-            }
-            
+            status = splitLine(fileLine);
+            if (status == -1) cout << "Line " << currentLine << ": Name must be inputted first.\n";
+            else if (status == -2) cout << "Line " << currentLine << ": Wrong format input.\n";
         }
 
-        if (status == 0)
-            shapeStatuses.insert(pair<string, bool>(preName, TRUE));
-        else
-            shapeStatuses.insert(pair<string, bool>(preName, FALSE));
-
-        cout << "-Error:\n";
-
-        for (map<int16_t, int16_t>::iterator errorItr = errors.begin(); errorItr != errors.end(); errorItr++) {
-            cout << " \t Line " << errorItr->first << ": ";
-            UIHandler::showMessage(errorItr->second);
-        }
-
-        cout << "\n\n" << "-Result:\n";
-
-        for (map<string, bool>::iterator shapeStatusesItr = shapeStatuses.begin(); shapeStatusesItr != shapeStatuses.end(); shapeStatusesItr++) {
-            if (shapeStatusesItr->second)
-                cout << "\t" << shapeStatusesItr->first << " is created successfully.\n";
-            else
-                cout << "\t" << shapeStatusesItr->first << " cannot be created due to errors.\n";
-        }
-
-        cout << "\n\n";
+        rawData.push_back(InputHandler::getInstance()->mapData);
+        filterAndSaveData();
     }
-} 
+}

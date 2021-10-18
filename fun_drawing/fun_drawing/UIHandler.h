@@ -1,5 +1,6 @@
 #include "Shape.h"
 #include "DataHandler.h"
+#include "InputHandler.h"
 
 #ifndef UIHandler_H
 #define UIHandler_H

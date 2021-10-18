@@ -14,7 +14,7 @@ private:
     static vector<Shape*> shapeList;
 public:
     static void addShape(Shape* shape);
-    static vector<Shape*> getShape();
+    static vector<Shape*>& getShape();
 };
 
 #endif

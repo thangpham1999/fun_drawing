@@ -5,8 +5,8 @@
 
 class Line : public Shape {
 private:
-    int16_t len;
-    string dir;
+    int16_t len = -1;
+    string dir = "";
     const string attributes[3] = { "Length", "Direction", "DrawSymbol" };
     const string direction[2] = { "Horizontal", "Vertical" };
 public:
@@ -20,6 +20,7 @@ public:
     bool isValidShape();
     bool isValidAttrb(string attrb);
     bool isValidValue(string attrb, string value);
+    vector<string> emptyAttrbs();
     void setAttrb(string attrb, string value);
 };
 

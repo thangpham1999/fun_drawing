@@ -24,13 +24,13 @@ int main(void)
         switch (opt) {
         case 1:
             InputHandler::getInstance()->handleInputFile();
-            cout << "\nPress enter to return to menu.";
+            cout << "\n\n\n\nPress enter to return to menu.";
             getline(cin, waiting);
             system("cls");
             break;
         case 2:
             UIHandler::draw();
-            cout << "\nPress enter to return to menu.";
+            cout << "\n\n\n\nPress enter to return to menu.";
             getline(cin, waiting);
             system("cls");
             break;
@@ -51,8 +51,16 @@ int main(void)
 
     while (getline(myFile, inputLine)) {
         currentLine++;
-        status = InputHandler::getInstance()->handleInputLine(inputLine);
-        cout << "Line " << currentLine << " : " << status << endl;
+        status = InputHandler::getInstance()->splitLine(inputLine);
+        //cout << "Line " << currentLine << " : " << status << endl;
+    }
+
+    InputHandler::getInstance()->rawData.push_back(InputHandler::getInstance()->mapData);
+
+    for (auto shape : InputHandler::getInstance()->rawData) {
+        for (map<string, string>::iterator itr = shape.begin(); itr != shape.end(); itr++) {
+            cout << itr->first << " " << itr->second << endl;
+        }
     }*/
 }
 

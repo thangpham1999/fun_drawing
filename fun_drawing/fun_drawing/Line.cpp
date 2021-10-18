@@ -1,8 +1,8 @@
 #include "Line.h"
 
 Line::Line() {
-    len = 0;
-    dir = "Horizontal";
+    len = -1000;
+    dir = "\0";
 }
 Line::Line(int16_t l, string d) {
     len = l;
@@ -46,6 +46,7 @@ bool Line::isValidAttrb(string attrb) {
     }
     return FALSE;
 }
+
 bool Line::isValidValue(string attrb, string value) {
     if (attrb == "Length") return (isNumber(value) && stoi(value) > 0);
     else if (attrb == "Direction") {
@@ -56,9 +57,21 @@ bool Line::isValidValue(string attrb, string value) {
     else if (attrb == "DrawSymbol") return (value.length() == 1);
     else return FALSE;
 }
+
+vector<string> Line::emptyAttrbs() {
+    vector<string> res;
+    if (len == -1000)
+        res.push_back("Length");
+    if (dir == "\0")
+        res.push_back("Direction");
+    if (drawSym == '\0')
+        res.push_back("DrawSymbol");
+    return res;
+}
+
 void Line::setAttrb(string attrb, string value) {
-    if (attrb == "Length") len = stoi(value);
-    else if (attrb == "Direction") dir = value;
-    else if (attrb == "DrawSymbol") drawSym = value[0];
+    if (attrb == "Length" && isNumber(value)) len = stoi(value);
+    else if (attrb == "Direction" && (value == "Horizontal") || value == "Vertical") dir = value;
+    else if (attrb == "DrawSymbol" && value.length() == 1) drawSym = value[0];
 
 }

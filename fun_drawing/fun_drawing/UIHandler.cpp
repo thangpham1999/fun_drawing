@@ -60,8 +60,9 @@ int16_t UIHandler::getOption() {
 void UIHandler::draw() {
     system("cls");
     vector<Shape*> shapes = Storage::getShape();
-    for (auto i : shapes) {
-        i->draw();
+    for (auto shape : shapes) {
+        shape->draw();
     }
+    InputHandler::getInstance()->handleInvalidShapes();
     currentY = 0;
 }
