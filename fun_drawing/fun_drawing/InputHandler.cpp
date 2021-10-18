@@ -80,8 +80,10 @@ void InputHandler::filterAndSaveData() {
                             i--;
                             j--;
                         }
-                        else if (q == 'N')
+                        else if (q == 'N') {
                             rawData.erase(rawData.begin() + i);
+                            i--;
+                        }
                     }
                     break;
                 }
