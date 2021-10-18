@@ -1,7 +1,7 @@
 #include "Ellipse.h"
 
 Ell::Ell() {
-    center.x = center.y = width = height = 0;
+    center.x = center.y = width = height = -1000;
 }
 Ell::Ell(int16_t x, int16_t y, int16_t w, int16_t h) {
     center.x = x;
@@ -65,10 +65,27 @@ bool Ell::isValidValue(string attrb, string value) {
     else if (attrb == "DrawSymbol") return (value.length() == 1);
     else return FALSE;
 }
+
+vector<string> Ell::emptyAttrbs() {
+    vector<string> res;
+
+    if (center.x == -1000)
+        res.push_back("CenterX");
+    if (center.y == -1000)
+        res.push_back("CenterY");
+    if (width == -1000)
+        res.push_back("Width");
+    if (height == -1000)
+        res.push_back("Height");
+    if (drawSym == '\0')
+        res.push_back("DrawSymbol");
+    return res;
+}
+
 void Ell::setAttrb(string attrb, string value) {
-    if (attrb == "Width") width = stoi(value);
-    else if (attrb == "Height") height = stoi(value);
-    else if (attrb == "CenterX") center.x = stoi(value);
-    else if (attrb == "CenterY") center.y = stoi(value);
-    else if (attrb == "DrawSymbol") drawSym = value[0];
+    if (attrb == "Width" && isNumber(value)) width = stoi(value);
+    else if (attrb == "Height" && isNumber(value)) height = stoi(value);
+    else if (attrb == "CenterX" && isNumber(value)) center.x = stoi(value);
+    else if (attrb == "CenterY" && isNumber(value)) center.y = stoi(value);
+    else if (attrb == "DrawSymbol" && value.length() == 1) drawSym = value[0];
 }

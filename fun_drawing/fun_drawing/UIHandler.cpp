@@ -1,37 +1,34 @@
 #include "UIHandler.h"
 
 void UIHandler::showOption() {
-    cout << "Menu:\n" << "1. Input text.\n" << "2. Draw.\n" << "3. Open file.\n" << "4. End session.\n";
+    cout << "Menu:\n" << "1. Open file.\n" << "2. Draw.\n" << "3. Quit.\n";
     cout << "Please enter your option: ";
 }
 
-void UIHandler::showGuide(int16_t opt) {
-    switch (opt) {
+void UIHandler::showGuide(int16_t option) {
+    switch (option) {
     case 1:
-        cout << "Please enter your text. Remember these following rules: \n" << "1. Name of objects must be in []  \n2. Enter 'ET' at the end of your text\n";
-        break;
-    case 3:
         cout << "Please enter your file path: ";
         break;
-    case 4:
+    case 3:
         cout << "Exiting...";
         break;
     }
 }
 
-void UIHandler::showMessage(int16_t i) {
-    switch (i) {
+void UIHandler::showMessage(int16_t messageCode) {
+    switch (messageCode) {
     case 0:
-        cout << "Your shape is created successfully\n";
+        cout << "Your shape is created successfully\n\n";
         break;
     case -1:
-        cout << "Error: Name must be inputted before Type.\n";
+        cout << "Error: Name must be inputted first.\n";
         break;
     case -2:
-        cout << "Error: Type must be inputted before Attributes.\n";
+        cout << "Error: Type must be inputted right after Name and before Attributes\n";
         break;
     case -3:
-        cout << "Invalid shape type.\n";
+        cout << "Error: Invalid shape type.\n";
         break;
     case -4:
         cout << "Error: Invalid attributes.\n";
@@ -40,19 +37,13 @@ void UIHandler::showMessage(int16_t i) {
         cout << "Error: Invalid attribute values.\n";
         break;
     case -6:
-        cout << "Error: Cannot input new object when not complete previous object.\n";
+        cout << "Error: Name already exists. Please input another name.\n";
         break;
     case -7:
-        cout << "Warning: Your object is not completed. If you exit, your data will be lost? Do you still want to exit? (Y/N) ";
+        cout << "Error: Wrong input format.\n";
         break;
     case -8:
-        cout << "This name already exists. Please input another name.\n";
-        break;
-    case -9:
         cout << "Cannot open your file!.\n";
-        break;
-    case -10:
-        cout << "Your file content is invalid. Please modify it. \n";
         break;
     default:
         cout << "Unknown error.\n";
@@ -69,9 +60,9 @@ int16_t UIHandler::getOption() {
 void UIHandler::draw() {
     system("cls");
     vector<Shape*> shapes = Storage::getShape();
-    for (auto i : shapes) {
-        i->draw();
+    for (auto shape : shapes) {
+        shape->draw();
     }
+    InputHandler::getInstance()->handleInvalidShapes();
     currentY = 0;
-    cout << "\nPress enter to return to menu.";
 }

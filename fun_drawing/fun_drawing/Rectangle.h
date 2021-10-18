@@ -18,6 +18,7 @@ public:
     bool isValidShape();
     bool isValidAttrb(string attrb);
     bool isValidValue(string attrb, string value);
+    vector<string> emptyAttrbs();
     void setAttrb(string attrb, string value);
     void draw();
 };

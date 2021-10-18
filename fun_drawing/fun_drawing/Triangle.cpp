@@ -1,9 +1,10 @@
 #include "Triangle.h"
 
 Triangle::Triangle() {
-    width = 0;
-    height = 0;
+    width = -1000;
+    height = -1000;
     triType = "";
+    drawSym = '\0';
 }
 
 Triangle::Triangle(int16_t w, int16_t h, string t) {
@@ -11,12 +12,13 @@ Triangle::Triangle(int16_t w, int16_t h, string t) {
     height = h;
     triType = t;
 }
-//void Triangle::setWidth(int16_t w) { width = w; }
-//void Triangle::setHeight(int16_t h) { height = h; }
-//void Triangle::setTriType(string str) { triType = str; }
+
 int16_t Triangle::getWidth() { return width; }
+
 int16_t Triangle::getHeight() { return height; }
+
 string Triangle::getTriType() { return triType; }
+
 void Triangle::draw() {
     cout << name << " :" << endl;
     currentY++;
@@ -55,6 +57,7 @@ bool Triangle::isValidAttrb(string attrb) {
     }
     return FALSE;
 }
+
 bool Triangle::isValidValue(string attrb, string value) {
     if (attrb == "Width" || attrb == "Height") return (isNumber(value) && stoi(value) > 0);
     else if (attrb == "TriangleType") {
@@ -66,9 +69,23 @@ bool Triangle::isValidValue(string attrb, string value) {
     else if (attrb == "DrawSymbol") return (value.length() == 1);
     else return FALSE;
 }
+
+vector<string> Triangle::emptyAttrbs() {
+    vector<string> res;
+    if (width == -1000)
+        res.push_back("Width");
+    if (height == -1000)
+        res.push_back("Height");
+    if (triType == "\0")
+        res.push_back("TriangleType");
+    if (drawSym == '\0')
+        res.push_back("DrawSymbol");
+    return res;
+}
+
 void Triangle::setAttrb(string attrb, string value) {
-    if (attrb == "Width") width = stoi(value);
-    else if (attrb == "Height") height = stoi(value);
-    else if (attrb == "TriangleType") triType = value;
-    else if (attrb == "DrawSymbol") drawSym = value[0];
+    if (attrb == "Width" && isNumber(value)) width = stoi(value);
+    else if (attrb == "Height" && isNumber(value)) height = stoi(value);
+    else if (attrb == "TriangleType" && (value == "IsoscelesRight" || value == "Isosceles")) triType = value;
+    else if (attrb == "DrawSymbol" && value.length() == 1) drawSym = value[0];
 }

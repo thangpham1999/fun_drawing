@@ -5,9 +5,9 @@
 
 class Ell : public Shape {
 private:
-    Point center;
-    int16_t width;
-    int16_t height;
+    Point center = { -1, -1 };
+    int16_t width = -1;
+    int16_t height = -1;
     const string attributes[5] = { "Width", "Height", "CenterX", "CenterY", "DrawSymbol" };
 public:
     Ell();
@@ -21,6 +21,7 @@ public:
     bool isValidShape();
     bool isValidAttrb(string attrb);
     bool isValidValue(string attrb, string value);
+    vector<string> emptyAttrbs();
     void setAttrb(string attrb, string value);
 };
 
